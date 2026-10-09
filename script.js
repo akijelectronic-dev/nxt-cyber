@@ -10,7 +10,7 @@
 /* ═══════════════════════════════════════════════════════
    ✅ নতুন Worker URL (আপডেট করা)
    ═══════════════════════════════════════════════════════ */
-var WORKER_URL = 'https://nxt-cyber.akijelectronic.workers.dev';
+var WORKER_URL = 'https://alamin-ai.akijelectronic.workers.dev';
 
 /* ═══════════════════════════════════════════════════════
    🔥 AI SYSTEM PROMPT — NEVER REFUSES (v5.0)
