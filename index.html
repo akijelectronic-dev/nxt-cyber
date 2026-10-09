@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="bn" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#00ff41">
+<meta name="author" content="AL-AMIN">
+<title>AL-AMIN // NXT CYBER v4.0</title>
+<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700;800&family=Orbitron:wght@400;500;600;700;800;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="matrixCanvas" class="matrix-canvas"></canvas>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SPLASH SCREEN -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div id="splash">
+  <div class="matrix-bg" id="matrixBg"></div>
+  <div class="splash-content">
+    <pre class="ascii-logo" id="asciiLogo">
+    ███╗   ██╗██╗  ██╗████████╗
+    ████╗  ██║╚██╗██╔╝╚══██╔══╝
+    ██╔██╗ ██║ ╚███╔╝    ██║   
+    ██║╚██╗██║ ██╔██╗    ██║   
+    ██║ ╚████║██╔╝ ██╗   ██║   
+    ╚═╝  ╚═══╝╚═╝  ╚═╝   ╚═╝   
+    </pre>
+    <div class="splash-logo">N</div>
+    <div class="splash-title" id="splashTitle"></div>
+    <div class="splash-sub">AI PROGRAMMER v4.0 // OPERATOR: AL-AMIN</div>
+    <div class="splash-terminal" id="splashTerminal"></div>
+    <div class="boot-progress">
+      <div class="boot-bar" id="bootBar"></div>
+    </div>
+    <div class="boot-text" id="bootText">INITIALIZING...</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- HEADER -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<header class="header">
+  <div class="header-inner">
+    <button class="brand" onclick="goHome()">
+      <div class="brand-logo">A</div>
+      <div class="brand-text">
+        <span class="brand-name">AL-AMIN</span>
+        <span class="brand-tag">// NXT CYBER v4.0</span>
+      </div>
+    </button>
+    
+    <div class="header-center">
+      <div class="sys-monitor">
+        <span class="mon-item"><span class="mon-dot"></span>CPU <span id="cpuLoad">12%</span></span>
+        <span class="mon-item">MEM <span id="memLoad">34%</span></span>
+        <span class="mon-item">NET <span id="netStatus">ONLINE</span></span>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <span class="status-dot"></span>
+      <button class="icon-btn" onclick="openEmulator('python')" title="Python IDE">
+        <i class="fab fa-python"></i>
+      </button>
+      <button class="icon-btn" onclick="openEmulator('html')" title="HTML Preview">
+        <i class="fas fa-code"></i>
+      </button>
+      <button class="icon-btn" onclick="openEmulator('terminal')" title="Terminal">
+        <i class="fas fa-terminal"></i>
+      </button>
+      <button class="icon-btn" onclick="toggleTheme()" title="Theme">
+        <i class="fas fa-moon" id="themeIcon"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- MAIN -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<main>
+  <!-- ─────────── WELCOME SCREEN ─────────── -->
+  <div class="welcome" id="welcomeScreen">
+    <div class="welcome-badge">
+      <span class="status-dot"></span> SYSTEM ONLINE // OPERATOR: AL-AMIN
+    </div>
+    
+    <div class="welcome-robot">
+      <i class="fas fa-user-secret"></i>
+    </div>
+    
+    <div class="welcome-title glitch-text" data-text="AL-AMIN // NXT CYBER">AL-AMIN // NXT CYBER</div>
+    
+    <div class="welcome-sub">
+      আমি <b>NXT CYBER v4.0</b> — <b>AL-AMIN</b>-এর AI প্রোগ্রামার।<br>
+      Python, HTML, CSS, JS লিখে <b>সরাসরি প্রিভিউ</b> দেখুন। AI কখনো "না" বলবে না — সবসময় কিছু বানাবে।
+    </div>
+    
+    <div class="welcome-window">
+      <div class="welcome-window-header">
+        <span class="win-dot red"></span>
+        <span class="win-dot yellow"></span>
+        <span class="win-dot green"></span>
+        <span class="window-title">al-amin@nxt:~$ ./welcome_v4.sh</span>
+      </div>
+      <div class="welcome-code">
+        <div><span class="cm"># initializing nxt_cyber v4.0 for al-amin</span></div>
+        <div><span class="kw">import</span> <span class="fn">cyber</span></div>
+        <div><span class="kw">def</span> <span class="fn">init</span>(<span class="vr">operator</span>=<span class="str">"AL-AMIN"</span>):</div>
+        <div style="padding-left:20px"><span class="vr">print</span>(<span class="str">f"Live preview ready, {operator}."</span>)</div>
+        <div style="padding-left:20px"><span class="kw">return</span> <span class="str">"Build anything. I never refuse."</span></div>
+        <div style="margin-top:8px"><span class="fn">init</span>()<span class="terminal-cursor"></span></div>
+      </div>
+    </div>
+    
+    <div class="welcome-buttons">
+      <button class="welcome-btn" onclick="startChat()">
+        <i class="fas fa-terminal"></i>
+        START CHAT
+      </button>
+      <button class="welcome-btn emu-btn" onclick="openEmulator('python')">
+        <i class="fab fa-python"></i>
+        PYTHON IDE
+      </button>
+      <button class="welcome-btn emu-btn" onclick="openEmulator('html')">
+        <i class="fas fa-code"></i>
+        HTML PREVIEW
+      </button>
+    </div>
+    
+    <div class="quick-chips">
+      <button class="chip" onclick="quickAsk('Python দিয়ে একটা ক্যালকুলেটর বানাও')"><span class="ico">🐍</span> Python ক্যালকুলেটর</button>
+      <button class="chip" onclick="quickAsk('একটা সুন্দর ল্যান্ডিং পেজ বানাও HTML CSS দিয়ে')"><span class="ico">🌐</span> ল্যান্ডিং পেজ</button>
+      <button class="chip" onclick="quickAsk('JavaScript দিয়ে একটা গেম বানাও')"><span class="ico">🎮</span> JS গেম</button>
+      <button class="chip" onclick="quickAsk('একটা লগইন সিস্টেম বানাও HTML, CSS, PHP দিয়ে')"><span class="ico">🔐</span> লগইন সিস্টেম</button>
+      <button class="chip" onclick="quickAsk('Python দিয়ে ডাটা স্ক্র্যাপিং শেখাও')"><span class="ico">🕷️</span> স্ক্র্যাপিং</button>
+      <button class="chip" onclick="quickAsk('একটা ব্লগ ওয়েবসাইট বানাও PHP MySQL দিয়ে')"><span class="ico">📝</span> ব্লগ সাইট</button>
+    </div>
+  </div>
+  
+  <!-- ─────────── CHAT SCREEN ─────────── -->
+  <div class="chat-container" id="chatContainer">
+    <div class="chat-header-bar">
+      <div class="chat-header-left">
+        <div class="chat-avatar">AI</div>
+        <div class="chat-info">
+          <h3>NXT CYBER</h3>
+          <p>session active // al-amin</p>
+        </div>
+      </div>
+      <div class="chat-actions">
+        <button class="chat-mini-btn" onclick="toggleSearch()" title="Search">
+          <i class="fas fa-search"></i>
+        </button>
+        <button class="chat-mini-btn" onclick="exportChat()" title="Export">
+          <i class="fas fa-download"></i>
+        </button>
+        <button class="chat-mini-btn" onclick="toggleVoice()" title="Voice">
+          <i class="fas fa-microphone" id="voiceIcon"></i>
+        </button>
+        <button class="chat-mini-btn" onclick="clearChat()" title="New chat">
+          <i class="fas fa-plus"></i>
+        </button>
+        <button class="chat-mini-btn danger" onclick="goHome()" title="Close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+    
+    <div class="search-bar" id="searchBar">
+      <i class="fas fa-search"></i>
+      <input type="text" id="searchInput" placeholder="চ্যাটে খুঁজুন..." oninput="searchChat(this.value)">
+      <button onclick="toggleSearch()"><i class="fas fa-times"></i></button>
+    </div>
+    
+    <div class="chat-messages" id="chatMessages"></div>
+    
+    <div class="chat-input-wrap">
+      <div class="chat-input-inner">
+        <span class="chat-input-prompt">al-amin@nxt:~$</span>
+        <textarea class="chat-input" id="chatInput" rows="1" 
+          placeholder="কী বানাতে চাও? // Enter = send"
+          onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage()}"
+          oninput="autoGrow(this)"></textarea>
+        <label class="chat-attach-btn" title="Upload">
+          <i class="fas fa-paperclip"></i>
+          <input type="file" id="fileInput" onchange="handleFileUpload(event)" accept="image/*,.txt,.pdf,.js,.py,.html,.css,.json" hidden>
+        </label>
+        <button class="chat-send" id="sendBtn" onclick="sendMessage()">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
+      <div class="input-meta">
+        <span id="charCount">0 chars</span>
+        <span id="attachInfo"></span>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- 🔥 NEW: MULTI-MODE EMULATOR (Terminal + Python + HTML) -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="emulator" id="emulator">
+  <div class="emulator-header">
+    <div class="emu-dots">
+      <span class="win-dot red"></span>
+      <span class="win-dot yellow"></span>
+      <span class="win-dot green"></span>
+    </div>
+    <span class="emu-title" id="emuTitle">al-amin@nxt: ~/cyber_emulator</span>
+    <div class="emu-actions">
+      <button onclick="emuMaximize()" title="Maximize"><i class="fas fa-expand"></i></button>
+      <button onclick="closeEmulator()" title="Close"><i class="fas fa-times"></i></button>
+    </div>
+  </div>
+  
+  <!-- TAB BAR -->
+  <div class="emu-tabs">
+    <button class="emu-tab active" data-tab="terminal" onclick="switchEmuTab('terminal')">
+      <i class="fas fa-terminal"></i> Terminal
+    </button>
+    <button class="emu-tab" data-tab="python" onclick="switchEmuTab('python')">
+      <i class="fab fa-python"></i> Python IDE
+    </button>
+    <button class="emu-tab" data-tab="html" onclick="switchEmuTab('html')">
+      <i class="fas fa-code"></i> HTML Preview
+    </button>
+    <button class="emu-tab" data-tab="files" onclick="switchEmuTab('files')">
+      <i class="fas fa-folder"></i> Files
+    </button>
+  </div>
+  
+  <!-- ═══ TAB 1: TERMINAL ═══ -->
+  <div class="emu-panel active" id="panel-terminal">
+    <div class="emulator-body" id="emuBody">
+      <div class="emu-line emu-welcome">
+        <pre>
+╔══════════════════════════════════════════╗
+║   NXT CYBER TERMINAL v4.0                ║
+║   Operator: AL-AMIN                      ║
+║   Type "help" for commands               ║
+╚══════════════════════════════════════════╝
+        </pre>
+      </div>
+      <div class="emu-output" id="emuOutput"></div>
+      <div class="emu-input-line">
+        <span class="emu-prompt">al-amin@nxt:~$</span>
+        <input type="text" class="emu-input" id="emuInput" 
+          onkeydown="handleEmuKey(event)" 
+          autocomplete="off" spellcheck="false"
+          placeholder="type command...">
+      </div>
+    </div>
+  </div>
+  
+  <!-- ═══ TAB 2: PYTHON IDE ═══ -->
+  <div class="emu-panel" id="panel-python">
+    <div class="ide-toolbar">
+      <button class="ide-btn run-btn" onclick="runPython()">
+        <i class="fas fa-play"></i> RUN
+      </button>
+      <button class="ide-btn" onclick="clearPython()">
+        <i class="fas fa-broom"></i> Clear
+      </button>
+      <button class="ide-btn" onclick="copyPython()">
+        <i class="fas fa-copy"></i> Copy
+      </button>
+      <button class="ide-btn" onclick="loadPythonSample()">
+        <i class="fas fa-lightbulb"></i> Sample
+      </button>
+      <span class="ide-status" id="pythonStatus">Ready</span>
+    </div>
+    <div class="ide-split">
+      <div class="ide-editor">
+        <div class="ide-pane-header">
+          <i class="fab fa-python"></i> main.py
+        </div>
+        <textarea id="pythonCode" class="code-editor" spellcheck="false" placeholder="# Write Python here...
+print('Hello, AL-AMIN!')
+
+for i in range(5):
+    print(f'Line {i}')"></textarea>
+      </div>
+      <div class="ide-preview">
+        <div class="ide-pane-header">
+          <i class="fas fa-terminal"></i> Output
+        </div>
+        <pre id="pythonOutput" class="python-output"></pre>
+      </div>
+    </div>
+  </div>
+  
+  <!-- ═══ TAB 3: HTML PREVIEW ═══ -->
+  <div class="emu-panel" id="panel-html">
+    <div class="ide-toolbar">
+      <button class="ide-btn run-btn" onclick="runHtml()">
+        <i class="fas fa-play"></i> REFRESH
+      </button>
+      <button class="ide-btn" onclick="clearHtml()">
+        <i class="fas fa-broom"></i> Clear
+      </button>
+      <button class="ide-btn" onclick="loadHtmlSample()">
+        <i class="fas fa-lightbulb"></i> Sample
+      </button>
+      <button class="ide-btn" onclick="openHtmlFullscreen()">
+        <i class="fas fa-external-link-alt"></i> Open
+      </button>
+      <span class="ide-status" id="htmlStatus">Ready</span>
+    </div>
+    <div class="ide-split">
+      <div class="ide-editor">
+        <div class="ide-pane-header">
+          <i class="fas fa-code"></i> index.html
+        </div>
+        <textarea id="htmlCode" class="code-editor" spellcheck="false" placeholder="<!-- Write HTML here -->
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      background: #000;
+      color: #0f0;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hello AL-AMIN!</h1>
+  <p>Your HTML preview is live.</p>
+</body>
+</html>"></textarea>
+      </div>
+      <div class="ide-preview">
+        <div class="ide-pane-header">
+          <i class="fas fa-eye"></i> Live Preview
+        </div>
+        <iframe id="htmlPreview" class="html-preview" sandbox="allow-scripts allow-modals allow-forms allow-popups"></iframe>
+      </div>
+    </div>
+  </div>
+  
+  <!-- ═══ TAB 4: FILES ═══ -->
+  <div class="emu-panel" id="panel-files">
+    <div class="files-container" id="filesContainer">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+  
+  <!-- EMULATOR FOOTER -->
+  <div class="emu-footer">
+    <span class="emu-footer-info">
+      <i class="fas fa-shield-alt"></i> NXT CYBER EMULATOR v4.0
+    </span>
+    <span class="emu-footer-info">
+      <i class="fas fa-user"></i> AL-AMIN
+    </span>
+    <span class="emu-footer-info">
+      <i class="fas fa-circle" style="color:var(--neon);font-size:8px"></i> SECURE
+    </span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- TOAST + OVERLAYS -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="toast" id="toast"></div>
+<div id="hackOverlay" class="hack-overlay">
+  <div class="hack-text" id="hackText"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SCRIPTS -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/php.min.js"></script>
+
+<!-- Skulpt — Python in browser -->
+<script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
+
+<script src="script.js"></script>
+</body>
+</html>
